@@ -1,0 +1,6 @@
+@import "cssmolecule";
+@import "custom-bs";
+@import "./scss/mixins";
+
+@include bootstrap;
+@import "./scss/footer"

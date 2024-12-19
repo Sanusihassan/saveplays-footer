@@ -1,0 +1,62 @@
+footer {
+
+    @include extend("bg-light py-4 border-top");
+
+    .footer-container {
+        @include extend("container d-flex flex-wrap justify-content-between align-items-start"
+        );
+
+        svg {
+            max-width: 100%;
+            width: 95%;
+            height: 180px;
+
+            text {
+                font-size: 2em;
+            }
+        }
+    }
+
+    .copyright-container {
+        @include extend("flex-fill me-4");
+
+        .copyright-text {
+            @include extend("fs-6 text-muted");
+        }
+    }
+
+    h4 {
+        @include extend("fs-5 text-dark mb-2");
+    }
+
+    ul {
+        @include extend("list-unstyled");
+
+        li {
+            @include extend("mb-2");
+
+            a {
+                @include extend("text-primary text-decoration-none");
+                color: black !important;
+
+                &:hover {
+                    @include extend("text-decoration-underline");
+                    text-decoration-color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) !important
+                }
+            }
+        }
+    }
+
+    .downloader-links,
+    .company,
+    .legal,
+    .language {
+        @include extend("flex-fill");
+
+        ul {
+            li a {
+                @include extend("fs-6");
+            }
+        }
+    }
+}
