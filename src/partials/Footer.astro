@@ -1,6 +1,35 @@
 ---
-// @ts-ignore
+import { content as content_en } from "../content/content";
+import { content as content_ar } from "../content/content-ar";
+import { content as content_es } from "../content/content-es";
+import { content as content_fr } from "../content/content-fr";
+import { content as content_hi } from "../content/content-hi";
+import { content as content_zh } from "../content/content-zh";
+import { content as content_ru } from "../content/content-ru";
+import { content as content_bn } from "../content/content-bn";
+import { content as content_de } from "../content/content-de";
+import { content as content_id } from "../content/content-id";
+
 import Logo from "./Logo.astro";
+
+const { lang } = Astro.props;
+
+// Map of language codes to content objects
+const contentMap = {
+    en: content_en,
+    ar: content_ar,
+    es: content_es,
+    fr: content_fr,
+    hi: content_hi,
+    zh: content_zh,
+    ru: content_ru,
+    bn: content_bn,
+    de: content_de,
+    id: content_id,
+};
+
+// Fallback to English if lang is not provided or unsupported
+const content = contentMap[lang] || content_en;
 ---
 
 <footer>
@@ -9,66 +38,71 @@ import Logo from "./Logo.astro";
         <div class="copyright-container">
             <Logo />
             <p class="copyright-text">
-                &copy; {new Date().getFullYear()} saveplays.com
+                &copy; {new Date().getFullYear()}
+                {content.brandName}
             </p>
         </div>
 
         <!-- Downloader Links -->
         <div class="downloader-links">
-            <h4>Downloaders</h4>
+            <h4>{content.downloaders.title}</h4>
             <ul>
-                <li><a href="/youtube-downloader">YouTube</a></li>
-                <li><a href="/facebook-downloader">Facebook</a></li>
-                <li><a href="/instagram-downloader">Instagram</a></li>
-                <li><a href="/tiktok-downloader">TikTok</a></li>
+                {
+                    content.downloaders.links.map((link) => (
+                        <li>
+                            <a href={link.href}>{link.label}</a>
+                        </li>
+                    ))
+                }
             </ul>
         </div>
 
         <!-- Company Links -->
         <div class="company">
-            <h4>Company</h4>
+            <h4>{content.company.title}</h4>
             <ul>
-                <li><a href="/about-us">About Us</a></li>
-                <li><a href="/faq">FAQ</a></li>
-                <li><a href="/blog">Blog</a></li>
+                {
+                    content.company.links.map((link) => (
+                        <li>
+                            <a href={link.href}>{link.label}</a>
+                        </li>
+                    ))
+                }
             </ul>
         </div>
 
         <!-- Legal Links -->
         <div class="legal">
-            <h4>Legal</h4>
+            <h4>{content.legal.title}</h4>
             <ul>
-                <li><a href="/privacy-policy">Privacy Policy</a></li>
-                <li><a href="/terms-of-service">Terms of Service</a></li>
+                {
+                    content.legal.links.map((link) => (
+                        <li>
+                            <a href={link.href}>{link.label}</a>
+                        </li>
+                    ))
+                }
             </ul>
         </div>
 
         <!-- Language Selector -->
         <div class="language">
-            <h4>Languages</h4>
+            <h4>{content.language.title}</h4>
             <ul class="navbar-language-menu">
-                <li><a class="navbar-language-item" href="/">English</a></li>
-                <li><a class="navbar-language-item" href="/ar">العربية</a></li>
-                <li>
-                    <a class="navbar-language-item latino-type" href="/es"
-                        >Español</a
-                    >
-                </li>
-                <li>
-                    <a class="navbar-language-item latino-type" href="/fr"
-                        >Français</a
-                    >
-                </li>
-                <li><a class="navbar-language-item" href="/hi">हिंदी</a></li>
-                <li><a class="navbar-language-item" href="/zh">中文</a></li>
-                <li><a class="navbar-language-item" href="/bn">বাংলা</a></li>
-                <li><a class="navbar-language-item" href="/ru">Русский</a></li>
-                <li>
-                    <a class="navbar-language-item" href="/id"
-                        >Bahasa Indonesia</a
-                    >
-                </li>
-                <li><a class="navbar-language-item" href="/de">Deutsch</a></li>
+                {
+                    content.language.languages.map((language) => (
+                        <li>
+                            <a
+                                class={`navbar-language-item ${
+                                    language.className || ""
+                                }`}
+                                href={language.href}
+                            >
+                                {language.label}
+                            </a>
+                        </li>
+                    ))
+                }
             </ul>
         </div>
     </div>

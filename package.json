@@ -1,8 +1,8 @@
 {
   "name": "saveplays-footer",
   "type": "module",
-  "private": "false",
-  "version": "0.0.1",
+  "private": false,
+  "version": "0.0.2",
   "scripts": {
     "dev": "astro dev",
     "build": "astro check && astro build",
