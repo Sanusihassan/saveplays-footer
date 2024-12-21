@@ -62,11 +62,13 @@ const content = contentMap[lang] || content_en;
             <h4>{content.company.title}</h4>
             <ul>
                 {
-                    content.company.links.map((link) => (
-                        <li>
-                            <a href={link.href}>{link.label}</a>
-                        </li>
-                    ))
+                    content.company.links
+                        .filter((link) => link.href !== "/blog")
+                        .map((link) => (
+                            <li>
+                                <a href={link.href}>{link.label}</a>
+                            </li>
+                        ))
                 }
             </ul>
         </div>
