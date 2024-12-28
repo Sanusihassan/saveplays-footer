@@ -2,7 +2,7 @@ footer {
 
     @include extend("bg-light py-4 border-top");
 
-    .footer-container {
+    .container {
         @include extend("container d-flex flex-wrap justify-content-between align-items-start"
         );
 
@@ -58,5 +58,58 @@ footer {
                 @include extend("fs-6");
             }
         }
+    }
+
+
+
+    .social-links {
+        @include extend("w-100 mb-4");
+
+        ul {
+            @include extend("d-flex justify-content-center gap-4");
+        }
+
+        .social-icon {
+            @include extend("d-flex align-items-center justify-content-center");
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+
+            &:hover {
+                transform: translateY(-2px);
+                opacity: 0.8;
+            }
+
+            // Brand-specific colors
+            &.twitter {
+                color: #000000 !important; // X's black color
+
+                &:hover {
+                    color: #14171A !important;
+                }
+            }
+
+            &.facebook {
+                color: #1877F2 !important; // Facebook blue
+
+                &:hover {
+                    color: #1559b8 !important;
+                }
+            }
+
+            &.reddit {
+                color: #FF4500 !important; // Reddit orange
+
+                &:hover {
+                    color: #d93b00 !important;
+                }
+            }
+        }
+    }
+
+    .footer-divider {
+        @include extend("w-100 my-4");
+        border-color: rgba(0, 0, 0, 0.1);
     }
 }

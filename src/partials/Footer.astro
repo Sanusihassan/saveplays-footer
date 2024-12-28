@@ -9,11 +9,11 @@ import { content as content_ru } from "../content/content-ru";
 import { content as content_bn } from "../content/content-bn";
 import { content as content_de } from "../content/content-de";
 import { content as content_id } from "../content/content-id";
+import { FaXTwitter, FaFacebook, FaReddit } from "react-icons/fa6";
 
 import Logo from "./Logo.astro";
 
 const { lang } = Astro.props;
-
 // Map of language codes to content objects
 const contentMap = {
     en: content_en,
@@ -33,8 +33,49 @@ const content = contentMap[lang] || content_en;
 ---
 
 <footer>
-    <div class="footer-container">
-        <!-- Logo and Copyright -->
+    <div class="container">
+        <div class="social-links">
+            <ul>
+                <li>
+                    <a
+                        href="https://twitter.com/saveplaysx"
+                        target="_blank"
+                        rel="noopener"
+                        class="social-icon twitter"
+                        aria-label="Follow us on X (Twitter)"
+                    >
+                        <FaXTwitter size={24} />
+                    </a>
+                </li>
+                <li>
+                    <a
+                        href="https://facebook.com/saveplaysfb"
+                        target="_blank"
+                        rel="noopener"
+                        class="social-icon facebook"
+                        aria-label="Follow us on Facebook"
+                    >
+                        <FaFacebook size={24} />
+                    </a>
+                </li>
+                <li>
+                    <a
+                        href="https://reddit.com/r/saveplays"
+                        target="_blank"
+                        rel="noopener"
+                        class="social-icon reddit"
+                        aria-label="Join our Reddit community"
+                    >
+                        <FaReddit size={24} />
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <hr class="footer-divider" />
+    <!-- Logo and Copyright -->
+    <div class="container">
         <div class="copyright-container">
             <Logo />
             <p class="copyright-text">
